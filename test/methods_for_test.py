@@ -3,6 +3,9 @@ import re
 
 
 class UtilitariosAnaliseTexto:
+    def __init__(self, texto=""):
+        self.texto = texto
+        
     def contar_palavras_unicas(self):
         """Conta o número de palavras únicas na string."""
         return len(set(self.texto.lower().split()))
@@ -17,7 +20,8 @@ class UtilitariosAnaliseTexto:
         return dict(Counter(caracteres))
 
     def palavras_unicas_ordenadas(self):
-        pass
+        """Retorna uma lista de palavras únicas ordenadas alfabeticamente."""
+        return sorted(set(self.texto.lower().split()))
 
     def palavra_mais_longa(self):
         """Retorna a palavra mais longa na string. Em caso de empate, retorna a primeira."""
@@ -25,7 +29,17 @@ class UtilitariosAnaliseTexto:
         return max(palavras, key=len) if palavras else ""
 
     def prefixo_comum(self, lista_palavras):
-        pass
+        """Retorna o prefixo comum mais longo entre as palavras da lista."""
+        if not lista_palavras:
+            return ""
+        prefixo = lista_palavras[0].lower()
+        for palavra in lista_palavras[1:]:
+            palavra = palavra.lower()
+            while not palavra.startswith(prefixo):
+                prefixo = prefixo[:-1]
+                if not prefixo:
+                    return ""
+        return prefixo
 
     def contar_frases(self):
         """Conta o número de frases no texto, considerando pontos, exclamações e interrogações."""
@@ -33,4 +47,16 @@ class UtilitariosAnaliseTexto:
         return len([frase for frase in frases if frase.strip()])
 
     def fatores_primos(self, numero):
-        pass
+        """Retorna uma lista de fatores primos do número fornecido."""
+        if numero < 2:
+            return []
+        fatores = []
+        divisor = 2
+        while divisor * divisor <= numero:
+            while numero % divisor == 0:
+                fatores.append(divisor)
+                numero //= divisor
+            divisor += 1
+        if numero > 1:
+            fatores.append(numero)
+        return fatores
