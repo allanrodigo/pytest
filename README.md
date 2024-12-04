@@ -17,11 +17,11 @@ Este projeto consiste em uma biblioteca de utilitários para análise de texto. 
 
 1. Clone este repositório:
    ```bash
-   git clone https://github.com/seu-usuario/utilitarios-analise-texto.git
+   git clone https://github.com/seu-usuario/pytest.git
    ```
 2. Navegue até o diretório do projeto:
    ```bash
-   cd utilitarios-analise-texto
+   cd pytest
    ```
 
 ## Para executar os testes:
